@@ -1,0 +1,263 @@
+﻿<Window x:Class="ContractTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContractTemplate"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1250">
+    <Grid Name="GridMain" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="115"/>
+            <RowDefinition Height ="80*"/>
+            <RowDefinition Height ="25"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" >
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Физ.лицо: Фио = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxPersonFio" Width="250" Height="25" Margin="0,10,20,0" Text="Иванов Иван Иванович"/>
+                <Label Content="Документ = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxPersonDocument" Width="300" Height="25"  Margin="0,10,20,0" Text="уд/личн.№011215127, выдан 01.05.2019 МВД РК"/>
+                <Label Content="Место проживания = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxPersonPlace" Width="280" Height="25"  Margin="0,10,20,0" Text="г.Нур-Султан, мкр-н Молодежный, дом 5, кв.101"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Фирма: Название = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxFirmName" Width="250" Height="25" Margin="0,10,20,0" Text="АО Комета"/>
+                <Label Content="Фио ген.директора(в род.падеже) = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxFirmFio" Width="250" Height="25" Margin="0,10,20,0" Text="Кузнецова Константина Валентиновича"/>
+                <Label Content="Место нахождения" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxFirmPlace" Width="200" Height="25" Margin="0,10,20,0" Text="г. Нур-Султан, ул. Парковая, д. 7"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxDate" Width="100" Height="25" Margin="0,10,20,0"/>
+                <Label Content="Транспортное средство = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxVehicle" Width="470" Height="25" Margin="0,10,20,0" Text="ВАЗ 21102, седан, год выпуска 2005, цвет белый, государственный регистрационный номер Е352ВЛ199RUS, идентификационный номер ХТА21102758268392, номер двигателя 0380347, номер кузова 0534830"/>
+                <Label Content="Месячная аредная плата в тенге = " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                <TextBox Name="TextBoxRent" Width="180" Height="25" Margin="0,10,20,0" Text="25000 (двадцать пять тысяч)"/>
+            </StackPanel>
+        </StackPanel>
+        <FlowDocumentScrollViewer Grid.Column="0" Grid.Row="1" IsToolBarVisible="True"  Name="targetPrint" Grid.RowSpan="2">
+            <FlowDocument  FontFamily="Times New Roman" FontSize="18">
+                    <Table>
+                        <Table.Columns>
+                            <TableColumn Width="*" />
+                            <TableColumn Width="3*" />
+                        </Table.Columns>
+                        <TableRowGroup>
+                            <TableRow>
+                                <TableCell>
+                                </TableCell>
+                                <TableCell>
+                                <Paragraph><Bold>Договор аренды транспортного средства без экипажа</Bold></Paragraph>
+                            </TableCell>
+                            </TableRow>
+                        </TableRowGroup>
+                    </Table>
+                <Paragraph>
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxDate, Mode=TwoWay}"/>
+                    <LineBreak/>
+                    <LineBreak/>
+                    Гражданин
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonFio, Mode=TwoWay}"/> (<TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonDocument, Mode=TwoWay}"/>),
+                    проживающий по адресу:
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonPlace, Mode=TwoWay}"/>, именуемый в дальнейшем «Арендодатель», с одной стороны,
+                    и
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmName, Mode=TwoWay}"/>, именуемое в дальнейшем «Арендатор», в лице генерального директора
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmFio, Mode=TwoWay}"/>, действующего на основании Устава, с другой стороны, заключили настоящий Договор о нижеследующем.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>1. Предмет договора</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    1.1. Арендодатель предоставляет Арендатору за плату во временное владение и пользование транспортное средство, указанное в п. 1.2 настоящего Договора, без оказания услуг по управлению им и его технической эксплуатации для использования Арендатором в своей хозяйственной деятельности.
+                    <LineBreak/>
+                    <LineBreak/>
+                    1.2. Характеристики транспортного средства, передаваемого в аренду (далее — транспортное средство):
+                    <LineBreak/>
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxVehicle, Mode=TwoWay}"/>.
+                    <LineBreak/>
+                    <LineBreak/>
+                    1.3. Передаваемое в аренду транспортное средство принадлежит Арендодателю на праве собственности. Арендодатель гарантирует, что на момент заключения настоящего Договора транспортное средство не является предметом залога и не обременено другими правами третьих лиц.
+                    <LineBreak/>
+                    <LineBreak/>
+                    1.4. Передача транспортного средства в аренду осуществляется по акту приемки-передачи (Приложение № 1), который является неотъемлемой частью настоящего Договора.
+                    <LineBreak/>
+                    <LineBreak/>
+                    1.5. Срок аренды составляет два года с даты передачи транспортного средства Арендатору по акту приемки-передачи.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>2. Права и обязанности сторон</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.1. Арендодатель обязан:
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.1.1. Предоставить Арендатору транспортное средство в состоянии, пригодном для эксплуатации.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.1.2. Передать Арендатору вместе с транспортным средством все его принадлежности и документацию (включая свидетельство о государственной регистрации транспортного средства, талон о прохождении государственного технического осмотра, руководство по эксплуатации) в месте нахождения Арендатора по адресу: <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmPlace, Mode=TwoWay}"/>.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2. Арендатор обязан:
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.1. Осмотреть транспортное средство и проверить его состояние перед подписанием акта приемки-передачи.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.2. Использовать транспортное средство в соответствии с его назначением.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.3. Вносить арендную плату в размере, в сроки и в порядке, предусмотренном настоящим Договором.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.4. Поддерживать транспортное средство в рабочем состоянии, включая проведение текущего и капитального ремонта.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.5. Возвратить транспортное средство Арендодателю в состоянии, пригодном для эксплуатации, с учетом нормального износа в течение 10 дней после истечения срока аренды или расторжения договора в порядке, предусмотренном настоящим Договором, по акту возврата транспортного средства (Приложение № 2). Арендатор обязан возвратить транспортное средство в месте нахождения Арендатора по адресу: <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmPlace, Mode=TwoWay}"/>.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.6. Вместе с транспортным средством вернуть Арендодателю принадлежности и документы, которые получены от Арендодателя согласно акту приемки-передачи.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.2.7. В случае несвоевременного возврата транспортного средства уплатить арендную плату за период просрочки.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.3. Арендатор несет расходы по техническому обслуживанию транспортного средства, страхованию гражданской ответственности автовладельцев (ОСАГО), страхованию транспортного средства (каско), а также расходы, возникающие в связи с эксплуатацией транспортного средства, включая приобретение горюче-смазочных материалов.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.4. Доходы, полученные Арендатором в результате использования транспортного средства в соответствии с настоящим Договором, являются собственностью Арендатора.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2.5. Арендатор вправе сдавать транспортное средство в субаренду при условии письменного согласия Арендодателя.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>3. Улучшения арендованного имущества</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    3.1. Произведенные Арендатором отделимые улучшения транспортного средства являются собственностью Арендатора.
+                    <LineBreak/>
+                    <LineBreak/>
+                    3.2. Арендатор вправе с согласия Арендодателя производить неотделимые улучшения транспортного средства. После прекращения настоящего Договора Арендодатель обязан возместить Арендатору стоимость неотделимых улучшений транспортного средства.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>4. Арендная плата</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    4.1. Арендная плата за пользование транспортным средством составляет
+                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxRent, Mode=TwoWay}"/> тенге в месяц.
+                    <LineBreak/>
+                    <LineBreak/>
+                    4.2. Арендная плата уплачивается не позднее 7 числа месяца, следующего за месяцем, в котором Арендатор осуществлял использование автомобиля.
+                    <LineBreak/>
+                    <LineBreak/>
+                    4.3. Оплата аренды осуществляется Арендатором путем перечисления платежным поручением причитающейся суммы на банковский счет Арендодателя.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>5. Последующий выкуп арендованного имущества</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    5.1. Арендатор не имеет права на последующий выкуп транспортного средства.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>6. Ответственность сторон</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    6.1. При несвоевременном перечислении арендной платы Арендатор уплачивает Арендодателю пеню в размере 0,05% от суммы просроченного платежа за каждый день просрочки.
+                    <LineBreak/>
+                    <LineBreak/>
+                    6.2. В случае нарушения сроков возврата транспортного средства Арендодателю, установленных в п. 2.2.5 настоящего Договора, Арендатор обязан уплатить Арендодателю штраф в размере пятикратной месячной аредной платы.
+                    <LineBreak/>
+                    <LineBreak/>
+                    6.3. Во всех других случаях неисполнения или ненадлежащего исполнения обязательств по настоящему Договору стороны несут ответственность в соответствии с действующим законодательством Республики Казахстан.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>7. Форс-мажор</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    7.1. Стороны освобождаются от ответственности за неисполнение или ненадлежащее исполнение обязательств по настоящему Договору, обусловленное обстоятельствами непреодолимой силы.
+                    <LineBreak/>
+                    <LineBreak/>
+                    7.2. Сторона, которая не может исполнить своего обязательства, должна известить об этом другую сторону в течение 2 дней.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>8. Разрешение споров</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    8.1. Все споры или разногласия, возникающие между сторонами в связи с настоящим Договором, разрешаются путем переговоров между сторонами.
+                    <LineBreak/>
+                    <LineBreak/>
+                    8.2. Неурегулированные в процессе переговоров споры подлежат рассмотрению в судебном порядке в соответствии с законодательством Республики Казахстан.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>9. Изменение и расторжение договора</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    9.1. Все изменения и дополнения к настоящему Договору действительны при условии, что они оформлены в виде единого соглашения, заключенного в письменной форме.
+                    <LineBreak/>
+                    <LineBreak/>
+                    9.2. Каждая из сторон вправе в любое время в одностороннем внесудебном порядке отказаться от настоящего Договора, предварительно уведомив об этом другую сторону за 30 дней.
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Bold>10. Заключительные положения</Bold>
+                    <LineBreak/>
+                    <LineBreak/>
+                    10.1. Настоящий Договор составлен в двух экземплярах, имеющих одинаковую юридическую силу, по одному для каждой из сторон.
+                    <LineBreak/>
+                    <LineBreak/>
+                    10.2. Адреса, реквизиты и подписи сторон:
+                    <LineBreak/>
+                    <LineBreak/>
+                </Paragraph>
+                <Table>
+                    <Table.Columns>
+                        <TableColumn Width="*" />
+                        <TableColumn Width="*" />
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell>
+                                <Paragraph>
+                                    Арендодатель:
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonFio, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonDocument, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    Адрес: <TextBlock Text="{Binding Path=Text,ElementName=TextBoxPersonPlace, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    М.П.
+                                </Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>Арендатор:
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmName, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    в лице ген.директора
+                                    <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmFio, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    Адрес: <TextBlock Text="{Binding Path=Text,ElementName=TextBoxFirmPlace, Mode=TwoWay}"/>
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    <LineBreak/>
+                                    М.П.
+                                </Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+
+            </FlowDocument>
+    </FlowDocumentScrollViewer>
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="Print" Content="Печать" Width="100" Height="25" Margin="0 0 0 1" Click="Print_Click"/>
+        <Button Name="Exit" Content="Выход из программы" Width="150" Height="25" Margin="100 0 0 1" Click="Exit_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
